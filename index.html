@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器小组件</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center; /* 居中小组件 */
+            align-items: center; /* 垂直居中小组件 */
+            height: 100vh; /* 视口高度 */
+            background: none; /* 清除网页背景 */
+        }
+
+        .widget-container {
+            background-image: url('background.png'); /* 小组件背景图片 */
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: row; /* Arrange items horizontally */
+            justify-content: space-between; /* Spread the items across the container */
+            align-items: center;
+            width: 700px; /* Set a fixed width if needed */
+            height: 350px; /* Set a fixed height if needed */
+        }
+
+        .timer-container {
+            background-color: rgba(245, 211, 161, 0.7); /* 半透明背景 */
+            padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+            margin-top: 5px; /* 间距 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .clock-container-left {
+            background-color: rgba(245, 211, 161, 0.7); /* 半透明背景 */
+            padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+            margin-top: -70px; /* 间距 */
+            margin-left: 20px; /* 间距 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .clock-container-right {
+            background-color: rgba(245, 211, 161, 0.7); /* 半透明背景 */
+            padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+            margin-top: -185px; /* 间距 */
+            margin-right: 30px; /* 间距 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .clock-time{
+            font-size: 15px;
+            font-family: 'Arial Black', sans-serif;
+            color: #8A5A44;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .timer-time{
+            font-size: 10px;
+            color: #8A5A44;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .clock-digit, .timer-header {
+            background-color: #8A5A44;
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 0 2.5px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .clock-colon {
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            margin: 0 2.5px;
+        }
+
+        .clock-date {
+            font-size: 10px;
+            color: #8A5A44;
+        }
+
+        .timer-days {
+            font-size: 15px;
+            font-family: 'Arial Black', sans-serif;
+            color: #8A5A44;
+        }
+    </style>
+</head>
+<body>
+    <!-- 小组件容器 -->
+    <div class="widget-container">
+        <!-- 左侧芝加哥时间 -->
+        <div class="clock-container-left">
+            <div class="timer-header">芝加哥时间</div>
+            <div class="clock-time" id="chicago-clock">
+                <div class="clock-digit" id="chicago-hour">00</div>
+                <div class="clock-colon">:</div>
+                <div class="clock-digit" id="chicago-minute">00</div>
+                <div class="clock-colon">:</div>
+                <div class="clock-digit" id="chicago-second">00</div>
+            </div>
+            <div class="clock-date" id="chicago-date">YYYY/MM/DD 周X</div>
+        </div>
+
+        <!-- 中间倒计时器 -->
+        <div class="timer-container">
+            <div class="timer-header">异国已经</div>
+            <div class="timer-days" id="days">0天</div>
+            <div class="timer-time" id="time">00时00分00秒</div>
+        </div>
+
+        <!-- 右侧北京时间 -->
+        <div class="clock-container-right">
+            <div class="timer-header">北京时间</div>
+            <div class="clock-time" id="beijing-clock">
+                <div class="clock-digit" id="beijing-hour">00</div>
+                <div class="clock-colon">:</div>
+                <div class="clock-digit" id="beijing-minute">00</div>
+                <div class="clock-colon">:</div>
+                <div class="clock-digit" id="beijing-second">00</div>
+            </div>
+            <div class="clock-date" id="beijing-date">YYYY/MM/DD 周X</div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="timer.js"></script>
+    <script src="clock.js"></script>
+</body>
+</html>
